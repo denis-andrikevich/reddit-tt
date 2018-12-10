@@ -1,0 +1,23 @@
+<div class="container">
+  <app-entry-subreddit
+    (setSubreddit)="onSetSubreddit($event)"
+  ></app-entry-subreddit>
+  <div class="row">
+    <button type="button" [disabled]="!(entries$ | async).data.before" (click)="onPaginate(false)">Prev</button>
+    <button type="button" [disabled]="!(entries$ | async).data.after" (click)="onPaginate(true)">Next</button>
+  </div>
+  <div class="row">
+    <div class="col-6 d-flex" *ngFor="let entry of (entries$ | async).data.children">
+      <app-entry
+        [thumbnail]="entry.data.thumbnail"
+        [created]="entry.data.created"
+        [num_comments]="entry.data.num_comments"
+        [author]="entry.data.author"
+        [score]="entry.data.score"
+        [permalink]="entry.data.permalink"
+        [title]="entry.data.title"
+        (click)="onNavigate(entry)"
+      ></app-entry>
+    </div>
+  </div>
+</div>

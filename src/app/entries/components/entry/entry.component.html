@@ -1,0 +1,18 @@
+<mat-card>
+  <img mat-card-image [src]="thumbnail">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>
+      <div [innerHTML]="title"></div>
+    </mat-card-title>
+    <mat-card-subtitle>Author: {{ author }} (score: {{ score }})</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p *ngIf="selfText" [innerHTML]="selfText"></p>
+    <p>{{ created | date: 'short' }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <p>Comments: {{ num_comments }}</p>
+    <!--<a [href]="permalink">{{ permalink }}</a>-->
+  </mat-card-actions>
+</mat-card>

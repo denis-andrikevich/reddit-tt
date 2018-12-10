@@ -1,0 +1,10 @@
+<ng-container *ngIf="comments; else empty">
+  <div *ngFor="let comment of comments.data.children">
+    <ul>
+      <li>
+        <p [innerHTML]="comment.data.body"></p>
+        <app-entry-comments [comments]="comment.data.replies" *ngIf="comment.data.replies"></app-entry-comments>
+      </li>
+    </ul>
+  </div>
+</ng-container>

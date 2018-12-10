@@ -1,0 +1,24 @@
+<a routerLink="/">Back</a>
+
+<div class="container" *ngIf="entry; else empty">
+  <app-entry
+    [thumbnail]="entry.data.thumbnail"
+    [created]="entry.data.created"
+    [num_comments]="entry.data.num_comments"
+    [author]="entry.data.author"
+    [score]="entry.data.score"
+    [permalink]="entry.data.permalink"
+    [title]="entry.data.title"
+    [selfText]="entry.data.selftext"
+  ></app-entry>
+
+  <div *ngIf="(comments$ | async)">
+    <h1>Comments</h1>
+    <app-entry-comments [comments]="(comments$ | async)"></app-entry-comments>
+  </div>
+
+</div>
+
+<ng-template #empty>
+  <h1>Nothing found</h1>
+</ng-template>

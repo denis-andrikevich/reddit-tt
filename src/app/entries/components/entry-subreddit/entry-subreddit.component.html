@@ -1,0 +1,19 @@
+<form
+  class="example-form"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-form-field>
+    <input matInput formControlName="subreddit">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Limit" formControlName="limit">
+      <mat-option *ngFor="let limit of limitOptions" [value]="limit">
+        {{ limit }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-button type="submit">Search</button>
+</form>
